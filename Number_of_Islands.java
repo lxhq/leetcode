@@ -1,4 +1,4 @@
-class Solution {
+class Number_of_Islands {
     public int numIslands(char[][] grid) {
         int count = 0;
         for (int i = 0; i < grid.length; i++) {

@@ -1,0 +1,32 @@
+import java.util.*;
+
+
+
+class Interval {
+     int start;
+     int end;
+     Interval() { start = 0; end = 0; }
+     Interval(int s, int e) { start = s; end = e; }
+}
+
+
+public class Merge_Intervals {
+
+  public List<Interval> merge(List<Interval> intervals) {
+    intervals.sort((a, b) -> (a.start - b.start));
+    int i = 0;
+    while (i < intervals.size() - 1) {
+      Interval a = intervals.get(i);
+      Interval b = intervals.get(i + 1);
+      if (a.end >= b.start) {
+        if (a.end < b.end) {
+          a.end = b.end;
+        }
+        intervals.remove(i + 1);
+      } else {
+        i++;
+      }
+    }
+    return intervals;
+  }
+}
