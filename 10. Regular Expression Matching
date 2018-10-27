@@ -1,5 +1,4 @@
-public class IsMatch {
-
+public class Solution {
   public boolean isMatch(String s, String p) {
     if (s == null || p == null) return false;
     boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
@@ -27,23 +26,5 @@ public class IsMatch {
       }
     }
     return dp[s.length()][p.length()];
-  }
-
-  public static void main(String[] args) {
-    IsMatch a = new IsMatch();
-    System.out.println(a.isMatch("ab", ".*"));
-    //System.out.println(a.isMatch("aab", "c*a*b"));
-    //System.out.println(a.isMatch("aab","abd"));
-    //System.out.println(a.isMatch("mississippi","mis*is*p*."));
-  }
-
-  private void print(boolean[][] dp) {
-    for (int i = 0; i < dp.length; i++) {
-      for (int j = 0; j < dp[0].length; j++) {
-        System.out.print(dp[i][j] + " ");
-      }
-      System.out.println('\n');
-    }
-    System.out.println('\n');
   }
 }
