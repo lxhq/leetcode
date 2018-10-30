@@ -1,5 +1,4 @@
-public class ProductExceptSelf {
-
+class Solution {
   public int[] productExceptSelf(int[] nums) {
     int[] arr1 = new int[nums.length];
     int[] arr2 = new int[nums.length];
