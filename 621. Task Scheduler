@@ -9,7 +9,8 @@ class Solution {
       }
     }
 
-    Queue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>((a, b) -> (a.getValue() - b.getValue()));
+    PriorityQueue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>( //frequency sort
+            (a,b) -> a.getValue() != b.getValue() ? b.getValue() - a.getValue() : a.getKey() - b.getKey());
     pq.addAll(map.entrySet());
     int count = 0;
     while (!pq.isEmpty()) {
