@@ -1,0 +1,25 @@
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int size = nums.length;
+        int noZero = 0;
+        int pointer = 0;
+        while (noZero < size) {
+            while (noZero < size && nums[pointer] != 0) {
+                pointer++;
+                noZero++;
+            }
+            while(noZero < size && nums[noZero] == 0) {
+                noZero++;
+            }
+            if (noZero < size) {
+                swap(nums, pointer, noZero);  
+            }
+        }
+    }
+    
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
