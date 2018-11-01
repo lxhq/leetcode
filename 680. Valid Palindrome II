@@ -1,0 +1,21 @@
+class Solution {
+    public boolean validPalindrome(String s) {
+        int lo = -1;
+        int hi = s.length();
+        while (lo++ < hi--) {
+            if (s.charAt(lo) != s.charAt(hi)) 
+                return isValid(s, lo + 1, hi)  || isValid(s, lo, hi - 1);
+        }
+        return true;
+    }
+    
+    
+    private boolean isValid(String s, int lo, int hi) {
+        while (lo < hi) {
+            if (s.charAt(lo) != s.charAt(hi)) return false;
+            lo++;
+            hi--;
+        }
+        return true;
+    }
+}
