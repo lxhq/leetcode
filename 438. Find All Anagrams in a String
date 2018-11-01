@@ -1,0 +1,31 @@
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> list = new LinkedList<>();
+        Map<Character, Integer> map = new HashMap();
+        for (char c : p.toCharArray()) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+        int begin = 0;
+        int end = 0;
+        int counter = map.size();
+        
+        while (end < s.length()) {
+            if (map.containsKey(s.charAt(end))) {
+                map.put(s.charAt(end), map.get(s.charAt(end)) - 1);
+                if (map.get(s.charAt(end)) == 0) counter--;
+            }
+            while (counter == 0) {
+                if (map.containsKey(s.charAt(begin))) {
+                    map.put(s.charAt(begin), map.get(s.charAt(begin)) + 1);
+                    if (map.get(s.charAt(begin)) == 1) counter++;
+                }
+                if (end - begin + 1 == p.length()) {
+                    list.add(begin);
+                }
+                begin++;
+            }
+            end++;
+        }
+        return list;
+    }
+}
