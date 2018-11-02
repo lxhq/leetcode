@@ -1,0 +1,28 @@
+class Solution {
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        int len = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        
+        int begin = 0;
+        int end = 0;
+        
+        while (end < s.length()) {
+            char e = s.charAt(end);
+            map.put(e, map.getOrDefault(e, 0) + 1);
+            end++;
+            
+            while (map.size() == 3) {
+                char b = s.charAt(begin);
+                map.put(b, map.get(b) - 1);
+                if (map.get(b) == 0) {
+                    map.remove(b);
+                }
+                begin++;
+            }
+            
+            len = Math.max(len, end - begin);
+        }
+        
+        return len;
+    }
+}
