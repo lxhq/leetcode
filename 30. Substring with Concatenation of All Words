@@ -1,0 +1,66 @@
+class Solution {
+    public List<Integer> findSubstring(String s, String[] words) {
+        List<Integer> list = new LinkedList<>();
+        if (words.length == 0) return list;
+        Map<Character, Integer> map = new HashMap<>();
+        int totLength = 0;
+        for (int i = 0; i < words.length; i++) {
+            for (Character c : words[i].toCharArray()) {
+                map.put(c, map.getOrDefault(c, 0) + 1);
+                totLength++;
+            }
+        }
+        
+        int begin = 0;
+        int end = 0;
+        int counter = map.size();
+        
+        while (end < s.length()) {
+            char e = s.charAt(end);
+            if (map.containsKey(e)) {
+                map.put(e, map.get(e) - 1);
+                if (map.get(e) == 0) {
+                    counter--;
+                }
+            }
+            end++;
+            
+            while (counter == 0) {
+                char b = s.charAt(begin);
+                if (map.containsKey(b)) {
+                    map.put(b, map.get(b) + 1);
+                    if (map.get(b) == 1)
+                        counter++;
+                }
+                if (end - begin == totLength) {
+                    if (helper(s.substring(begin, end), words))
+                        list.add(begin);
+                }
+                begin++;
+            }
+        }
+         return list;
+    }
+    
+    private boolean helper(String s, String[] words) {
+        
+        Map<String, Integer> mapWords = new HashMap<>();
+        for (String str : words) {
+            mapWords.put(str, mapWords.getOrDefault(str, 0) + 1);
+        }
+        
+        int end = 0;
+        int length = words[0].length();
+        while (end < s.length()) {
+            String str = s.substring(end, end + length);
+            if (mapWords.containsKey(str)) {
+                mapWords.put(str, mapWords.get(str) - 1);
+                if (mapWords.get(str) < 0) return false;
+            } else {
+                return false;
+            }
+            end = end + length;
+        }
+        return true;
+    }
+}
