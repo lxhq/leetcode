@@ -14,7 +14,7 @@ class Solution {
                     break;
                 }
                 for (int j = 0; j < wordList.size(); j++) {
-                    if (wordList.get(j).length() == word.length() && !list.contains(wordList.get(j))) {
+                    if (!list.contains(wordList.get(j))) {
                         int diff = 0;
                         for (int z = 0; z < word.length(); z++) {
                             if (wordList.get(j).charAt(z) != word.charAt(z)) {
