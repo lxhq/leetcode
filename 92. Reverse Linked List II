@@ -1,0 +1,31 @@
+class Solution {
+  public ListNode reverseBetween(ListNode head, int m, int n) {
+    if (head == null || head.next == null || m >= n) return head;
+    ListNode dummy = new ListNode(0);
+    dummy.next = head;
+    ListNode node = dummy;
+    int begin = m - 1;
+    int end = n - 1;
+    for (int i = 0; i < begin; i++)
+      node = node.next;
+    ListNode endNode = new ListNode(0);
+    ListNode start = node.next;
+    node.next = helper(node.next, node.next.next, n - m, 0, endNode);
+    start.next = endNode.next;
+    return dummy.next;
+
+  }
+
+  private ListNode helper(ListNode pre, ListNode node, int n, int counter, ListNode endNode) {
+    if (counter == n - 1) {
+      endNode.next = node.next;
+      node.next = pre;
+      return node;
+    } else {
+      counter++;
+      ListNode next = node.next;
+      node.next = pre;
+      return helper(node, next, n, counter, endNode);
+    }
+  }
+}
