@@ -1,0 +1,29 @@
+class Solution {
+    public int divide(int dividend, int divisor) {
+        int sign = (dividend ^ divisor) >= 0 ? 1 : -1;
+        
+        long dividendLong = Math.abs((long) dividend);
+        long divisorLong = Math.abs((long) divisor);
+        
+        long result = 0;
+        result = division(dividendLong, divisorLong);
+        if (result > Integer.MAX_VALUE) {
+            return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+        } else {
+            return sign == 1 ? (int) result : (int)(-result);
+        }
+    }
+    
+    private long division(long dividend, long divisor) {
+        if (dividend < divisor) {
+            return 0;
+        }
+        long mutiply = 1;
+        long sum = divisor;
+        while (sum + sum <= dividend) {
+            sum += sum;
+            mutiply += mutiply;
+        }
+        return mutiply + division(dividend - sum, divisor);
+    }
+}
