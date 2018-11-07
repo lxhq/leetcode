@@ -1,0 +1,27 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null) return 0;
+        Queue<Integer> queue = new PriorityQueue<>((a, b) -> (b - a));
+        helper(root, queue);
+        return queue.poll();
+    }
+    
+    private int helper(TreeNode node, Queue queue) {
+        if (node == null) {
+            return 0;
+        }
+        int left = helper(node.left, queue);
+        int right = helper(node.right, queue);
+        queue.offer(left + right);
+        return Math.max(left, right) + 1;
+    }
+}
