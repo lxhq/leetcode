@@ -1,0 +1,28 @@
+class Solution {
+    private List<List<Integer>> result = new ArrayList<>();
+    private List<Integer> select = new ArrayList<>();
+    private boolean[] visted;
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        Arrays.sort(nums);
+        visted = new boolean[nums.length];
+        helper(nums, 0);
+        return result;
+    }
+    
+    private void helper(int[] nums, int pos) {
+        if (pos == nums.length) {
+            result.add(new ArrayList<Integer>(select));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if(visted[i] == true || (i > 0 && nums[i] == nums[i-1] && visted[i-1] == false)){
+                continue;
+            }
+            select.add(nums[i]);
+            visted[i] = true;
+            helper(nums, pos + 1);
+            select.remove(select.size() - 1);
+            visted[i] = false;
+        }
+    }
+}
