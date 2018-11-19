@@ -1,0 +1,13 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        int r = 0;
+        int result = x ^ y;
+        String resultString = Integer.toBinaryString(result);
+        for (int i = 0; i < resultString.length(); i++) {
+            if (resultString.charAt(i) == '1') {
+                r++;
+            }
+        }
+        return r;
+    }
+}
