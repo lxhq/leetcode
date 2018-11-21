@@ -1,0 +1,14 @@
+class Solution {
+    public int countSubstrings(String s) {
+        int length = s.length();
+        int res = 0;
+        boolean[][] dp = new boolean[length][length];
+        for (int i = length - 1; i >= 0; i--) {
+            for (int j = i; j < length; j++) {
+                dp[i][j] =  s.charAt(j) == s.charAt(i) && (j - i < 3 || dp[i + 1][j - 1]);
+                if (dp[i][j]) res++;
+            }
+        }
+        return res;
+    }
+}
