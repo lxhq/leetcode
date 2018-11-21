@@ -1,0 +1,35 @@
+class Solution {
+    public int numSquares(int n) {
+        List<Integer> squareNums = new ArrayList<>();
+        Set<Integer> visited = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            if (i * i > n) break;
+            if (i * i == n) return 1;
+            squareNums.add(i * i);
+        }
+        
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(0);
+        visited.add(0);
+        int counter = 0;
+        while (queue.size() != 0) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                int num = queue.poll();
+                for (int j = 0; j < squareNums.size(); j++) {
+                    int res = num + squareNums.get(j);
+                    if (visited.contains(res))
+                    if (res > n) break;
+                    if (res == n) {
+                        return counter + 1;
+                    }
+                    if (visited.contains(res)) continue;
+                    visited.add(res);
+                    queue.add(res);
+                }
+            }
+            counter++;
+        }
+        return counter;
+    }
+}
