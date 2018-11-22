@@ -1,0 +1,27 @@
+class Solution {
+    public int totalFruit(int[] tree) {
+        int end = 0;
+        int start = 0;
+        int length = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        while (end < tree.length) {
+            int numEnd = tree[end];
+            map.put(numEnd, map.getOrDefault(numEnd, 0) + 1);
+            int counter = map.size();
+            end++;
+            
+            while (counter > 2) {
+                int numStart = tree[start];
+                map.put(numStart, map.get(numStart) - 1);
+                if (map.get(numStart) == 0) {
+                    map.remove(numStart);
+                }
+                counter = map.size();
+                start++;
+            }
+            length = Math.max(length, end - start);
+            
+        }
+        return length;
+    }
+}
