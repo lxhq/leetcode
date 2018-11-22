@@ -1,0 +1,29 @@
+class Solution {
+    public int numUniqueEmails(String[] emails) {
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < emails.length; i++) {
+            set.add(realAddress(emails[i]));
+        }
+        return set.size();
+    }
+    
+    private String realAddress(String address) {
+        StringBuilder sb = new StringBuilder();
+        int counter = 0;
+        while (counter < address.length()) {
+            if (address.charAt(counter) == '.') {
+                counter++;
+                continue;
+            }
+            if (address.charAt(counter) == '+') {
+                while (address.charAt(counter) != '@') {
+                    counter++;
+                }
+                return sb.append(address.substring(counter, address.length())).toString();
+            }
+            sb.append(address.charAt(counter));
+            counter++;
+        }
+        return sb.toString();
+    }
+}
