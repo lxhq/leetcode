@@ -1,0 +1,20 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix.length == 0) return false;
+        int rowBegin = 0;
+        int rowEnd = matrix.length - 1;
+        int colBegin = 0;
+        int colEnd = matrix[0].length - 1;
+        
+        while (rowEnd >= rowBegin && colEnd >= colBegin) {
+            if (matrix[rowBegin][colEnd] > target) {
+                colEnd--;
+            } else if (matrix[rowBegin][colEnd] < target) {
+                rowBegin++;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+}
