@@ -1,0 +1,52 @@
+class Solution {
+    public String replaceWords(List<String> dict, String sentence) {
+        Trie node = new Trie();
+        for (String str : dict) {
+            node.insert(str);
+        }
+        String[] strArray = sentence.split(" ");
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < strArray.length; i++) {
+            sb.append(node.findRoot(strArray[i]) + " ");
+        }
+        String res = sb.toString();
+        return res.substring(0, res.length() - 1);
+    }
+    
+    private class Trie{
+        Trie[] child = new Trie[26];
+        String word = "";
+        
+        Trie() {
+            
+        }
+        
+        private void insert(String word) {
+            Trie node = this;
+            for (int i = 0; i < word.length(); i++) {
+                if (node.child[word.charAt(i) - 'a'] == null) {
+                    node.child[word.charAt(i) - 'a'] = new Trie();
+                    node = node.child[word.charAt(i) - 'a'];
+                } else {
+                    node = node.child[word.charAt(i) - 'a'];
+                }
+            }
+            node.word = word;
+        }
+        
+        private String findRoot(String word) {
+            Trie node = this;
+            for (int i = 0; i < word.length(); i++) {
+                 if (node.child[word.charAt(i) - 'a'] == null) {
+                     return node.word.isEmpty() ? word: word.substring(0, i);
+                } else {
+                     node = node.child[word.charAt(i) - 'a'];
+                     if (node.word != "") {
+                         return node.word;
+                     }
+                }
+            }
+            return word;
+        }
+    }
+}
