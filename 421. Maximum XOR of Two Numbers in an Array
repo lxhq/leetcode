@@ -1,0 +1,42 @@
+class Solution {
+
+    private class TrieNode{
+        TrieNode[] child;
+        TrieNode(){
+            child = new TrieNode[2];
+        }
+    }
+    public int findMaximumXOR(int[] nums) {
+        if (nums == null || nums.length == 0) return 0;
+        TrieNode root = new TrieNode();
+        for (int num : nums) {
+            TrieNode cur = root;
+            for (int i = 31; i >= 0; i--) {
+                int index = (num >>> i) & 1;
+                if (cur.child[index] == null) {
+                    cur.child[index] = new TrieNode();
+                    cur = cur.child[index];
+                } else {
+                    cur = cur.child[index];
+                }
+            }
+        }
+        int res = Integer.MIN_VALUE;
+        for (int num : nums) {
+            TrieNode cur = root;
+            int sum = 0;
+            for (int i = 31; i >= 0; i--) {
+                int index = (num >>> i) & 1;
+                if (cur.child[index ^ 1] == null) {
+                    cur = cur.child[index];
+                } else {
+                    sum += (1 << i);
+                    cur = cur.child[index ^ 1];
+                }
+                
+            }
+            res = Math.max(res, sum);
+        }
+        return res;
+    }
+}
