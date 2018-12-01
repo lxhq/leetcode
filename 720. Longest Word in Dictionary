@@ -1,0 +1,54 @@
+class Solution {
+    public String longestWord(String[] words) {
+        TrieNode node = new TrieNode("-");
+        for (String word : words) {
+            node.insert(word, word);
+        }
+        String res = helper(node);
+        return res;
+    }
+    
+    private String helper(TrieNode node) {
+        if (node.character == "") return "";
+        int counter = 0;
+        String res = "";
+        for (int i = 0; i < 26; i++) {
+            String temp = "";
+            if (node.child[i] != null) {
+                temp = helper(node.child[i]);
+                counter++;
+            }
+            if (temp.length() > res.length()) {
+                res = temp;
+            }
+        }
+        return node.character.length() > res.length() ? node.character : res;
+    }
+    
+    private class TrieNode{
+        public TrieNode[] child = new TrieNode[26];
+        public String character;
+        TrieNode(String ch) {
+            character = ch;
+        }
+        
+        private void insert(String str, String comp) {
+            if (str.length() == 1) {
+                if (child[str.charAt(0) - 'a'] == null) {
+                    child[str.charAt(0) - 'a'] = new TrieNode(comp);
+                } else {
+                    child[str.charAt(0) - 'a'].character = comp;
+                }
+                return;
+            } 
+            String subStr = str.substring(1, str.length());
+            if (child[str.charAt(0) - 'a'] == null) {
+                child[str.charAt(0) - 'a'] = new TrieNode("");
+                child[str.charAt(0) - 'a'].insert(subStr, comp);
+            } else {
+                child[str.charAt(0) - 'a'].insert(subStr, comp);
+            }
+        }
+        
+    }
+}
