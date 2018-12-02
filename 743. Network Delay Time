@@ -1,0 +1,33 @@
+class Solution {
+    public int networkDelayTime(int[][] times, int N, int K) {
+        Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
+        
+        for (int[] time : times) {
+            map.putIfAbsent(time[0], new HashMap<>());
+            map.get(time[0]).put(time[1], time[2]);
+        }
+        
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[1] - b[1]));
+        pq.offer(new int[]{K, 0});
+        int res = 0;
+        Map<Integer, Integer> dist = new HashMap<>();
+        while (!pq.isEmpty()) {
+            int[] cur = pq.poll();
+            int node = cur[0];
+            int delay = cur[1];
+            if (dist.containsKey(node)) continue;
+            dist.put(node, delay);
+            res = delay;
+            N--;
+            if (!map.containsKey(node)) continue;
+                for (Map.Entry<Integer, Integer> entry : map.get(node).entrySet()) {
+                if (dist.containsKey(entry.getKey())) {
+                    continue;
+                } else {
+                    pq.offer(new int[]{entry.getKey(), entry.getValue() + delay});
+                }
+            }
+        }
+        return N == 0 ? res : -1;
+    }
+}
