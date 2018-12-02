@@ -1,0 +1,41 @@
+class Solution {
+    
+    private Map<String, List<String>> pairs = new HashMap<>();
+    private Map<String, List<Double>> pairValues = new HashMap<>();
+    public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
+        for (int i = 0; i < equations.length; i++) {
+            pairs.putIfAbsent(equations[i][0], new ArrayList<>());
+            pairs.get(equations[i][0]).add(equations[i][1]);
+            pairValues.putIfAbsent(equations[i][0], new ArrayList<>());
+            pairValues.get(equations[i][0]).add(values[i]);
+            
+            pairs.putIfAbsent(equations[i][1], new ArrayList<>());
+            pairs.get(equations[i][1]).add(equations[i][0]);
+            pairValues.putIfAbsent(equations[i][1], new ArrayList<>());
+            pairValues.get(equations[i][1]).add(1 / values[i]);
+        }
+        
+        double[] res = new double[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            res[i] = helper(queries[i][0], queries[i][1], new HashSet<String>(), 1);
+            if (res[i] == 0) res[i] = -1;
+        }
+        return res;
+    }
+    
+    private double helper(String start, String end, HashSet set, double value) {
+        if (set.contains(start)) return 0;
+        if (!pairs.containsKey(start) || !pairs.containsKey(end)) return 0;
+        if (start.equals(end)) return value;
+        set.add(start);
+        double temp = 0.0;
+        for (int i = 0; i < pairs.get(start).size(); i++) {
+            temp = helper(pairs.get(start).get(i), end, set, pairValues.get(start).get(i) * value);
+            if (temp != 0) {
+                break;
+            }
+        }
+        set.remove(start);
+        return temp;
+    }
+}
