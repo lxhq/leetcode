@@ -1,0 +1,37 @@
+class Solution {
+  public boolean backspaceCompare(String S, String T) {
+    int pointerS = S.length() - 1;
+    int pointerT = T.length() - 1;
+    while (pointerS >= 0 || pointerT >= 0) {
+      int counterS = 0;
+      while (pointerS >= 0 && (counterS > 0 || S.charAt(pointerS) == '#')) {
+        if (S.charAt(pointerS) == '#') {
+          counterS++;
+          pointerS--;
+        } else {
+          counterS--;
+          pointerS--;
+        }
+      }
+
+      Character charS = pointerS >= 0 ? S.charAt(pointerS) : '@';
+
+      int counterT = 0;
+      while (pointerT >= 0 && (T.charAt(pointerT) == '#' || counterT > 0)) {
+        if (T.charAt(pointerT) == '#') {
+          counterT++;
+          pointerT--;
+        } else {
+          counterT--;
+          pointerT--;
+        }
+      }
+      Character charT = pointerT >= 0 ? T.charAt(pointerT) : '@';
+      if (charT != charS) return false;
+      pointerS--;
+      pointerT--;
+    }
+
+    return true;
+  }
+}
