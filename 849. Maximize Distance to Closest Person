@@ -1,0 +1,24 @@
+class Solution {
+    public int maxDistToClosest(int[] seats) {
+        int len = 0;
+        int pointer = 0;
+        int start = 0;
+        while (pointer < seats.length) {
+            while (pointer < seats.length && seats[pointer] == 1) {
+                pointer++;
+            }
+            start = pointer;
+            while (pointer < seats.length && seats[pointer] == 0) {
+                pointer++;
+            }
+            
+            if (start == 0 || pointer == seats.length) {
+                len = Math.max(len, pointer - start);
+            } else {
+                len = Math.max(len, (pointer - start + 1) / 2);
+            }
+        }
+        
+        return len;
+    }
+}
