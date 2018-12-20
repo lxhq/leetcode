@@ -1,0 +1,27 @@
+class Solution {
+    public boolean canTransform(String start, String end) {
+        int len = start.length();
+        int pointerStart = 0;
+        int pointerEnd = 0;
+        while (pointerStart < len && pointerEnd < len) {
+            while (pointerStart < len && start.charAt(pointerStart) == 'X') ++pointerStart;
+            while (pointerEnd < len && end.charAt(pointerEnd) == 'X') ++pointerEnd;
+            if (pointerStart == len && pointerEnd == len) return true;
+            if (pointerStart == len || pointerEnd == len) return false;
+            
+            if (start.charAt(pointerStart) != end.charAt(pointerEnd)) {
+                return false;
+            }
+            if (start.charAt(pointerStart) == 'R' && pointerStart > pointerEnd) {
+                return false;
+            } 
+            
+            if (start.charAt(pointerStart) == 'L' && pointerStart < pointerEnd) {
+                return false;
+            }
+            pointerStart++;
+            pointerEnd++;
+        }
+        return true;
+    }
+}
