@@ -1,0 +1,31 @@
+class Solution {
+    //bottom up dfs with memorization
+    Map<Integer, List<String>> mem;
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        mem = new HashMap<>();
+        Set<String> dict = new HashSet<>(wordDict);
+        return dfs(s, dict, 0);
+    }
+    
+    private List<String> dfs(String s, Set<String> dict, int start) {
+        if (mem.containsKey(start)) {
+            return mem.get(start);
+        }
+        List<String> res = new ArrayList<>();
+        if (start == s.length()) {
+            res.add("");
+            return res;
+        }
+        for (int end = start + 1; end <= s.length(); end++) {
+            String sub = s.substring(start, end);
+            if (dict.contains(sub)) {
+                List<String> temp = dfs(s, dict, end);
+                for (String str : temp) {
+                    res.add(str.equals("") ? sub : sub + " " + str);
+                }
+            }
+        }
+        mem.put(start, res);
+        return res;
+    }
+}
