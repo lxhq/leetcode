@@ -12,3 +12,8 @@
 * Use DFS but not BFS to solve sub-tree problems. Please realize that root.left and root.right is the same tree as root.
 * We can apply the same function to all sub-trees because they are all the same.
 * Example：545. Boundary of Binary Tree.
+
+### 4. For problems about game theory
+* Use BFS to traverse all possible conditions step by step
+* Sometimes we can start from the must win result and traverse back to find all must win startting conditions. 
+* Example: 913. Cat and Mouse
