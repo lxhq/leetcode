@@ -17,3 +17,7 @@
 * Use BFS to traverse all possible conditions step by step
 * Sometimes we can start from the must win result and traverse back to find all must win startting conditions. 
 * Example: 913. Cat and Mouse
+
+### 5. For Parser Problem
+* There is a modularized solution using dfs
+* Example: 736. Parse Lisp Expression
