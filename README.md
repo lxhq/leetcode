@@ -21,3 +21,7 @@
 ### 5. For Parser Problem
 * There is a modularized solution using dfs
 * Example: 736. Parse Lisp Expression, 1096. Brace Expansion II
+
+### 6. For Problems about Sliding Window or Two Pointers
+* [Reference Discussion](https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem)
+* Example: 
