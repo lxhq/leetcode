@@ -24,4 +24,4 @@
 
 ### 6. For Problems about Sliding Window or Two Pointers
 * [Reference Discussion](https://leetcode.com/problems/find-all-anagrams-in-a-string/discuss/92007/sliding-window-algorithm-template-to-solve-all-the-leetcode-substring-search-problem)
-* Example: 
+* Example: 438. Find All Anagrams in a String, 76. Minimum Window Substring, 3. Longest Substring Without Repeating Characters, 30. Substring with Concatenation of All Words, 159. Longest Substring with At Most Two Distinct Characters, 438. Find All Anagrams in a String
