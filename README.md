@@ -30,3 +30,8 @@
 * Sometimes we not only need to find a specific number in an array but also need to find the most right one or the most left one.
 * For the most right one case, besides testing if mid - 1 is satisfied every time, we can simply set end = mid every time when we find mid is satisifed. When the termination condition is arrived (start < end), end and start is pointing to the most right satisifed answer. 
 * Example: 1011. Capacity To Ship Packages Within D Days
+
+### 8. Traveling Sales Man Problem
+* Reference to [Travelling Salesman Problem | Dynamic Programming | Graph Theory](https://www.youtube.com/watch?v=cY4HiiFHO1o)
+* Example: 943. Find the Shortest Superstring
+
