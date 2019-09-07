@@ -37,7 +37,7 @@
 
 ### 9. For Problems about sorted array
 * There are many porperties about sorted array. 
-* 1. One key point is that when we choose a position in an array we can determine if it is in the correct position(will it stay in the same position after we sort the whole array?) by some method. If the maxmium value in its left smaller than the smallest value in its right, we are sure that it is in the correct position. In other words, we can sort the left part and right part separately and concatenate them together to form the whole sorted list. There's no swap from left part to right part is needed.
+* One key point is that when we choose a position in an array we can determine if it is in the correct position(will it stay in the same position after we sort the whole array?) by some method. If the maxmium value in its left smaller than the smallest value in its right, we are sure that it is in the correct position. In other words, we can sort the left part and right part separately and concatenate them together to form the whole sorted list. There's no swap from left part to right part is needed.
 * Example: 769. Max Chunks To Make Sorted, 768. Max Chunks To Make Sorted II
 
 
