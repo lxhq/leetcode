@@ -43,3 +43,7 @@
 ### 10. For Problems about finding repeated substrings in a string
 * We could use 2 sets; one to recored all substrings we have ever seen, the other to recored substrings that could not be added to the first string (we have seen it before). Finally all strings that appear in the second set are the result.
 * Example: 187. Repeated DNA Sequences
+
+### 11. For Problems about finding the maximum subarray in an array
+* Kadane’s algorithm
+* Example: 1186. Maximum Subarray Sum with One Deletion
