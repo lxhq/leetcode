@@ -10,6 +10,7 @@
 * Example: 403. Frog Jump.
 #### 2. Please not only consider using a int[] or int[][] to record the dp states. The size of every stages' dp states my change. So we may use a changable structure (Map, Set, List ...) to store states in every stages. This is easy to use when dp transfer function only care about the i - 1 stage. So we can only keep one changeable structure. 
 * Example: 1187. Make Array Strictly Increasing
+#### 3. If a dp algorithm's transfer function only contains dp[i - 1], it is really similier to a kind of BFS algorithm
 
 
 ### 3. For tree - related problem please consider divide it to sub-trees
