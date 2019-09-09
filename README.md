@@ -5,8 +5,12 @@
 * But we can cut some visited branches in BFS.
 * Example: 140. Word Break II, 1066. Campus Bikes II, 679. 24 Game (Both bottom up and top down though there have better algorithm)
    
-### 2. For dynamic programming, please not only consider look back but also consider look forward
+### 2. For dynamic programming: 
+#### 1. Please not only consider look back but also consider look forward
 * Example: 403. Frog Jump.
+#### 2. Please not only consider using a int[] or int[][] to record the dp states. The size of every stages' dp states my change. So we may use a changable structure (Map, Set, List ...) to store states in every stages. This is easy to use when dp transfer function only care about the i - 1 stage. So we can only keep one changeable structure. 
+* Example: 1187. Make Array Strictly Increasing
+
 
 ### 3. For tree - related problem please consider divide it to sub-trees
 * Use DFS but not BFS to solve sub-tree problems. Please realize that root.left and root.right is the same tree as root.
