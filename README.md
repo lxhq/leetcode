@@ -53,3 +53,8 @@
 ### 11. For Problems about finding the maximum subarray in an array
 * Kadane’s algorithm
 * Example: 1186. Maximum Subarray Sum with One Deletion
+
+### 12. For Problems about divide and conquer
+* When problems can be divided into some sub-problems and all sub-problems are similiar and they contribute to slove the original problem, we can try to solve them by using divide and conquer.
+* I think (may not right) that divide and conquer are a kind of backtracking with minimize the size of problem when tracking down
+* Example: 241. Different Ways to Add Parentheses
