@@ -21,7 +21,8 @@
 ### 4. For problems about game theory
 * Use BFS to traverse all possible conditions step by step
 * Sometimes we can start from the must win result and traverse back to find all must win startting conditions. 
-* Example: 913. Cat and Mouse
+* Please consider minimax in zero-sum problems. The minimax algorithm is normally about using dfs to tarverse all possible states. And form the terminal node we must trace back to the root. For each Player's state, we selete the max or min value from its children that most benefit either of them.
+* Example: 913. Cat and Mouse, 464. Can I Win
 
 ### 5. For Parser Problem
 * There is a modularized solution using dfs
