@@ -58,3 +58,8 @@
 * When problems can be divided into some sub-problems and all sub-problems are similiar and they contribute to slove the original problem, we can try to solve them by using divide and conquer.
 * I think (may not right) that divide and conquer are a kind of backtracking with minimize the size of problem when tracking down
 * Example: 241. Different Ways to Add Parentheses
+
+### 13. For Problems about keeping two or more records during traversing
+* Sometimes we want to "slow update" something. For example, we want to find the longest increasing subsequence in an array. When we see a  new number, which is smaller than the smallest number we have ever seen, we want to keep a record of it but we have already have a length 4 subsequence so far we don't want to drop it, what would we do? The solution is very easy, just update the first evelement's value!!
+* By doing so, we reocrd both the smallest element and the longest increasing sub-sequence so far. It's really hard to describe it more, please see the example(s) below.
+* Example: 334. Increasing Triplet Subsequence
